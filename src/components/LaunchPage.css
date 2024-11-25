@@ -1,0 +1,124 @@
+/* LaunchPage.css */
+.launchPage-launch-page-container {
+  display: flex;
+  flex-direction: row; /* Arrange sections horizontally */
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  width: 100%;
+}
+
+.launchPage-left-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40px;
+  background-color: black;
+}
+
+.launchPage-main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align logo and content at the top */
+  gap: 20px; /* Space between the logo and text */
+}
+
+.launchPage-logo-image {
+  width: 350px; /* Adjust size as needed */
+  height: 550px;
+}
+
+.launchPage-text-and-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px; /* Space between features and actions */
+}
+
+.launchPage-app-title {
+  font-size: 2.5rem;
+  color: #e4ff00;
+  margin-bottom: 20px;
+  margin-top: 105px;
+}
+
+.launchPage-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.launchPage-features li {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.launchPage-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.launchPage-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.launchPage-primary {
+  background-color: #7b68ee;
+  color: white;
+}
+
+.launchPage-secondary {
+  background-color: black;
+  color: white;
+  border: 1px solid #fff;
+}
+
+.launchPage-google {
+  background-color: white;
+  color: black;
+}
+
+.launchPage-login-link {
+  margin-top: 10px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.launchPage-login-link:hover {
+  text-decoration: underline;
+}
+
+.launchPage-robot-image {
+  width: 150px;
+  height: auto;
+  margin-top: 50px;
+}
+
+.launchPage-right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.launchPage-right-section img {
+  margin-left: 20px;
+  margin-right: -40px;
+  width: 660px;
+}
+
+.launchPage-large-image {
+  width: 115%; /* Adjust to fill available width */
+  height: 113%; /* Adjust to fill available height */
+  object-fit: cover;
+  /* border-radius: 10px; */
+}

@@ -1,0 +1,302 @@
+/* General Page Layout */
+.loginPage-login-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  flex-wrap: wrap; /* Allow the content to wrap on smaller screens */
+}
+
+/* Left Section */
+.loginPage-left-section {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+
+}
+
+.loginPage-left-section h1 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  margin-top: -60px; /* Move heading upward */
+  color: white;
+  margin-left: 20px;
+}
+
+.loginPage-left-section p {
+  font-size: 12px;
+  margin-bottom: 30px;
+  background-color: black;
+  color:#ccc;
+  margin-left: 20px;
+}
+
+.loginPage-login-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  background-color: black;
+}
+
+.loginPage-login-form .input-group {
+  margin-bottom: 15px;
+  background-color: black;
+  color: #a569ff;
+}
+
+.input-group input {
+  width: 250px;
+  height: 30px;
+  border-radius: 5%;
+}
+
+.loginPage-login-form .input-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.loginPage-password-input {
+  display: flex;
+  align-items: center;
+}
+
+.loginPage-password-input input {
+  flex: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 5%;
+}
+
+.loginPage-password-toggle {
+  background: none;
+  border: none;
+  color: #a569ff;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+/* .loginPage-login-form .login-button {
+ width: 100%;
+  background-color: #a569ff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+.loginPage-login-button
+{
+  width: 100%;
+  background-color: #a569ff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* Center Image Section */
+.loginPage-image-section {
+  flex: 1.5;
+  position: relative;
+  text-align: center;
+}
+
+.loginPage-image-section .fitness-model {
+  max-width: 100%;
+  height: 600px;
+  z-index: 2;
+  margin-left: 150px;
+}
+
+.loginPage-vertical-text {
+  position: absolute;
+  font-size: 100px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.2);
+  top: 40%;
+  left: 20%;
+  transform: rotate(-90deg) translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Right Section */
+.loginPage-right-section {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Satisfied Customers Section */
+.loginPage-satisfied-customers {
+  position: absolute;
+  top: -30px; /* Adjust this to move it above registration */
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.loginPage-satisfied-customers .customer-avatars {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #a569ff;
+}
+
+.loginPage-satisfied-customers span {
+  font-size: 16px;
+  color: #a569ff;
+}
+
+/* Background Image */
+.loginPage-registration-background .background-icon {
+  max-width: 100%;
+  height: 600px;
+  opacity: 0.3; /* Lower opacity of the background image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Send the image behind the registration form */
+}
+
+/* Registration Form */
+.loginPage-register-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2; /* Ensure the form stays above the background image */
+  margin-top: 50px; /* Add margin to bring form above the background */
+}
+
+.loginPage-register-form .input-group {
+  margin-bottom: 15px;
+}
+
+.loginPage-register-form .input-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.loginPage-register-button {
+  width: 48%; /* Reduced width to align side-by-side with Profile button */
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.loginPage-profile-button {
+  width: 48%; /* Matches Register button size */
+  background-color: #a569ff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 2%; /* Small gap between buttons */
+  cursor: pointer;
+  display: inline-block;
+}
+
+.loginPage-satisfied-customers {
+  top: -20%;
+  right: 20%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .loginPage-login-page {
+    flex-direction: column;
+    padding: 20px;
+    justify-content: flex-start;
+  }
+
+  .loginPage-left-section, .loginPage-right-section {
+    max-width: 100%;
+    flex: 1;
+  }
+
+  .loginPage-image-section {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .loginPage-left-section h1 {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .loginPage-login-form .input-group input {
+    width: 100%;
+  }
+
+  .loginPage-login-form .login-button {
+    width: 100%;
+  }
+
+  .loginPage-register-button, .loginPage-profile-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .loginPage-satisfied-customers {
+    top: -10%;
+    right: 10%;
+  }
+
+  /* Ensure the registration form is visible */
+  .loginPage-register-form {
+    margin-top: 20px; /* Make sure there's enough space for the form */
+  }
+}
+
+@media (max-width: 480px) {
+  .loginPage-login-page {
+    padding: 15px;
+  }
+
+  .loginPage-image-section .fitness-model {
+    height: 400px;
+    margin-left: 0;
+  }
+
+  .loginPage-vertical-text {
+    font-size: 60px;
+    left: 10%;
+  }
+
+  .loginPage-login-form, .loginPage-register-form {
+    padding: 15px;
+  }
+
+  .loginPage-register-button, .loginPage-profile-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .loginPage-satisfied-customers {
+    top: -5%;
+    right: 5%;
+  }
+
+  /* Make sure the registration section is stacked properly */
+  .loginPage-register-form {
+    margin-top: 20px; /* Ensure it appears properly on mobile */
+  }
+}

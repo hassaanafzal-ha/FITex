@@ -1,0 +1,205 @@
+/* General Layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 20px 0;
+  }
+  
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+  
+  .navbar li {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .navbar .active-tab {
+    background-color: #a569ff;
+  }
+  
+  /* Subscription Content */
+  .subscription-container {
+    text-align: center;
+  }
+  
+  .subscription-title {
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: -1;
+    margin: 20px 0;
+  }
+  
+  .subscribe-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-color: #a569ff;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+    width: 80%;
+    flex-wrap: wrap; /* Enables stacking on smaller screens */
+  }
+  
+  .subscribe-text h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .subscribe-text p {
+    margin: 10px 0 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #a569ff;
+  }
+  
+  .subscribe-input {
+    display: flex;
+    gap: 10px;
+    flex-direction: column; /* Stacks input and button on smaller screens */
+  }
+  
+  .subscribe-input input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1;
+  }
+  
+  .subscribe-input button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .subscribe-input button:hover {
+    background-color: gray;
+  }
+  
+  /* Image Styling */
+  .subscribe-image img {
+    max-width: 150px;
+    /* border-radius: 10px; */
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: black;
+    color: white;
+    padding: 30px 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    flex-wrap: wrap; /* Makes footer columns stack on smaller screens */
+  }
+  
+  .footer-column {
+    flex: 1;
+    text-align: left;
+    margin: 0 10px;
+    min-width: 200px; /* Ensures columns have a minimum width */
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-column h3 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-column p {
+    color: white;
+    background-color: black;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    flex-wrap: wrap; /* Ensures content stacks in small screens */
+  }
+  
+  .footer-bottom ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-bottom ul li {
+    cursor: pointer;
+    color: white;
+  }
+  
+  .footer-bottom ul li:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .subscription-title {
+      font-size: 4rem; /* Reduce the size of the title */
+    }
+  
+    .subscribe-section {
+      flex-direction: column; /* Stacks the subscription content vertically */
+      text-align: center;
+      gap: 20px;
+    }
+  
+    .subscribe-text p {
+      font-size: 0.9rem; /* Adjust text size for smaller screens */
+    }
+  
+    .footer-content {
+      flex-direction: column; /* Footer content stacks vertically */
+      text-align: center;
+    }
+  
+    .footer-column {
+      margin-bottom: 20px; /* Add spacing between stacked footer columns */
+    }
+  
+    .footer-bottom {
+      flex-direction: column; /* Stacks the footer bottom content */
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .footer-bottom ul {
+      flex-direction: column; /* Stack social links vertically */
+    }
+  }
+    

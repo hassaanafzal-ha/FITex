@@ -1,0 +1,285 @@
+/* Main Container */
+.bmi-form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 50px; /* Increased spacing between sections */
+  position: relative;
+  background: url('/src/components/images/exerciseBackground.jpg') no-repeat center center;
+  background-size: cover;
+  color: #ffffff;
+  width: 100%; /* Ensure full-width */
+  max-width: 1200px; /* Ensure it doesn't grow too large */
+  margin: 0 auto; /* Center the container */
+  min-height: 600px; /* Ensure minimum height for the page */
+  background-color: rgba(0, 0, 0, 0.6); /* Adds a semi-transparent layer */
+  background-blend-mode: darken; /* Blends the background with the color */
+  box-sizing: border-box; /* Ensures padding doesn't add extra width */
+}
+
+
+/* Background "Body Mass" Text */
+.background-text {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 72px;
+  color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  z-index: 1; /* Ensure text is above the background image */
+  text-align: center;
+}
+
+/* Left Section */
+.left-section {
+  flex: 0.3;
+  text-align: left;
+  z-index: 2;
+}
+
+.left-section h1 {
+  padding-top: 200px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #6a92ff;
+}
+
+.left-section p {
+  font-size: 32px;
+  margin-bottom: 20px;
+  background-color: black;
+  color:white;
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.gender-buttons button {
+  background-color: #3c3c3c;
+  border: 1px solid #6a92ff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.gender-buttons button:hover {
+  background-color: #6a92ff;
+}
+
+/* Right Section */
+.right-section {
+  flex: 0.7;
+  display: flex;
+  flex-direction: row; /* Align sliders horizontally */
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 2;
+  width: 100%; /* Ensure full width */
+  max-width: 900px; /* Set a max width for responsiveness */
+}
+
+/* Vertical Slider (Height) */
+.vertical-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+
+.custom-slider-vertical {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px; /* Slider width */
+  height: 300px; /* Height for vertical slider */
+  background: linear-gradient(to top, #6a92ff, #3c3c3c);
+  border-radius: 4px;
+  outline: none;
+  writing-mode: bt-lr; /* Makes the slider vertical */
+}
+
+.custom-slider-vertical::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #6a92ff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-slider-vertical::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+.slider-label {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Horizontal Slider (Weight) */
+.horizontal-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Width for weight slider */
+  padding-top: 220px;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px; /* Slider track height */
+  background: linear-gradient(to right, #6a92ff, #3c3c3c);
+  border-radius: 4px;
+  outline: none;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #6a92ff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-slider::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+/* Calculate BMI Button */
+.calculate-bmi {
+  position: absolute;
+  bottom: 20px; /* Align at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #6a92ff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 2; /* Ensure button is above other content */
+}
+
+.calculate-bmi:hover {
+  background-color: #3c3c3c;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .bmi-form-container {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    padding: 10px;
+    min-height: 500px; /* Adjust min-height for smaller screens */
+  }
+
+  .left-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .gender-buttons {
+    justify-content: center;
+  }
+
+  .right-section {
+    flex-direction: column; /* Stack sliders vertically */
+    align-items: center;
+    width: 100%;
+  }
+
+  .vertical-slider, .horizontal-slider {
+    width: 100%; /* Make sliders full width */
+    max-width: 350px; /* Ensure slider is not too wide on small screens */
+  }
+
+  .custom-slider-vertical {
+    height: 250px; /* Adjust height for smaller screens */
+  }
+
+  .calculate-bmi {
+    width: 200px; /* Adjust button width */
+    font-size: 16px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-text {
+    font-size: 48px; /* Adjust font size for smaller screens */
+    top: 5%;
+    left: 10%;
+  }
+
+  .left-section h1 {
+    font-size: 28px;
+  }
+
+  .slider-label {
+    font-size: 16px; /* Smaller labels on mobile */
+  }
+}
+
+/* Vertical Slider (Height) */
+.vertical-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; /* Adjust width to fit vertical design */
+  height: 100px; /* Set height for vertical space */
+  justify-content: center; /* Center content vertically */
+  padding-top: 280px;
+}
+
+.custom-slider-vertical {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  background: linear-gradient(to top, #6a92ff, #3c3c3c); /* Gradient for the slider */
+  border-radius: 10px;
+  outline: none;
+  writing-mode: bt-lr; /* Ensures slider goes vertically */
+  transform: rotate(0deg); /* No rotation required, keep it vertical */
+}
+
+.custom-slider-vertical::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #6a92ff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-slider-vertical::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+.slider-label {
+  margin-top: 120px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #6a92ff;
+}
+
+.slider-value {
+  margin-right: 100px;
+}

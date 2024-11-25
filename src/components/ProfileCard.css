@@ -1,0 +1,203 @@
+.profile-card {
+  /* flex: 0.5; */
+  /* background-color: #232323; */
+  padding: 30px;
+  padding-top: 150px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+}
+
+.profile-card img {
+  width: 120px;
+  height: 120px;
+  /* border-radius: 50%; */
+  margin-bottom: 20px;
+}
+
+.profile-card h3 {
+  margin: 10px 0;
+  font-size: 22px;
+  color: #ffffff;
+  background-color: black;
+}
+
+.profile-card p {
+  margin: 5px 0;
+  color: #aaaaaa;
+  font-size: 14px;
+  color: white;
+  background-color: black;
+}
+
+.user-info {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #121212;
+  border-radius: 10px;
+  color: #6a92ff; /* Bluish text color */
+  font-size: 16px;
+  width: 90%;
+}
+
+.user-info-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: #a569ff;
+  border-radius: 20%;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3c3c3c; /* Match the background color in the image */
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  flex: 1;
+  font-size: 16px;
+  background-color: #a569ff;
+  height: 80px;
+}
+
+.info-item p {
+  margin: 5px 0;
+  background-color: #a569ff;
+}
+
+.info-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #6a92ff; /* Bluish color */
+}
+
+.info-label {
+  font-size: 12px;
+  /* color: #aaaaaa; */
+  color: white;
+}
+
+.running-emoji {
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #3c3c3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .profile-card {
+    padding-top: 100px; /* Adjust padding for smaller screens */
+    padding: 20px;
+    width: 90%; /* Ensure profile card takes less space on small screens */
+  }
+
+  .profile-card img {
+    width: 100px;
+    height: 100px; /* Smaller image for smaller screens */
+  }
+
+  .profile-card h3 {
+    font-size: 18px; /* Adjust font size */
+  }
+
+  .profile-card p {
+    font-size: 12px; /* Adjust font size */
+  }
+
+  .user-info {
+    width: 100%; /* Make user info section full width */
+  }
+
+  .user-info-grid {
+    flex-direction: column; /* Stack items vertically on small screens */
+    gap: 15px;
+  }
+
+  .info-item {
+    flex: 0.9;
+    width: 100%; /* Ensure each info item takes full width */
+    height: 60px; /* Adjust height for smaller screens */
+  }
+
+  .info-item p {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .info-value {
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .info-label {
+    font-size: 10px; /* Adjust font size */
+  }
+
+  .running-emoji {
+    width: 40px;
+    height: 40px; /* Smaller running emoji */
+    font-size: 20px; /* Smaller font size for emoji */
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding-top: 70px; /* Further adjust padding for very small screens */
+    padding: 15px;
+  }
+
+  .profile-card img {
+    width: 80px;
+    height: 80px; /* Even smaller image */
+  }
+
+  .profile-card h3 {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .profile-card p {
+    font-size: 10px; /* Smaller font size */
+  }
+
+  .user-info {
+    padding: 8px;
+    font-size: 14px; /* Adjust text size */
+  }
+
+  .user-info-grid {
+    flex-direction: column; /* Stack items vertically on mobile screens */
+  }
+
+  .info-item {
+    height: 50px; /* Adjust height */
+  }
+
+  .info-item p {
+    font-size: 12px; /* Adjust font size */
+  }
+
+  .info-value {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .info-label {
+    font-size: 10px; /* Adjust font size */
+  }
+
+  .running-emoji {
+    width: 30px;
+    height: 30px; /* Smaller running emoji */
+    font-size: 18px; /* Adjust font size */
+  }
+}

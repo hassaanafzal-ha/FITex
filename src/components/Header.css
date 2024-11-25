@@ -1,0 +1,79 @@
+/* Default styling */
+.header {
+  background-color: black;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.header nav ul li {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.header nav ul li.active {
+  color: #a569ff;
+}
+
+.header nav ul li a {
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+/* Styling for the active link */
+.active-link {
+  background-color: #a569ff; /* Blue background for active link */
+  color: white; /* Ensure text remains readable */
+  border-radius: 5px; /* Optional: Round the corners */
+}
+
+/* Mobile/Tablet responsive styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+  }
+
+  .header nav ul {
+    flex-direction: column; /* Stack the links vertically */
+    gap: 15px; /* Reduced gap for better spacing on small screens */
+  }
+
+  .header nav ul li {
+    font-size: 14px; /* Smaller font size for mobile */
+    text-align: center; /* Center text */
+  }
+
+  .header nav ul li a {
+    padding: 8px 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 15px; /* Further reduce padding for small screens */
+  }
+
+  .header nav ul {
+    gap: 10px; /* Even smaller gap between items */
+  }
+
+  .header nav ul li {
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .header nav ul li a {
+    padding: 6px 12px; /* Even smaller padding */
+  }
+}

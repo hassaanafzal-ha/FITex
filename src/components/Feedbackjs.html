@@ -1,0 +1,51 @@
+import React from 'react';
+import './Feedback.css';
+
+function Feedback() {
+  return (
+    <div className="feedback-container">
+      <div className="feedback-header">
+        <h1>FEEDBACK</h1>
+        <h2>What Our Member Say About Us?</h2>
+      </div>
+
+      <div className="feedback-content">
+        <div className="feedback-quote">
+          <p>
+            “Join this fitness member, the best choice that I've. They're very professional and give you suggestions about what food and nutrition that you can eat.”
+          </p>
+          <div className="feedback-author">
+            <img src="https://via.placeholder.com/50" alt="User" />
+            <div>
+              <strong>Hassaan Afzal</strong>
+              <span>Office Worker</span>
+            </div>
+          </div>
+          <div className="feedback-rating">
+            {"⭐".repeat(5)}
+          </div>
+        </div>
+
+        <div className="feedback-info">
+          <div className="customer-count">
+            <img src="https://via.placeholder.com/100" alt="Satisfied Customer" />
+            <p>10k+ Satisfied Customer</p>
+          </div>
+
+          <div className="faq-section">
+            <button className="faq-button">FAQ</button>
+            <button className="contact-button">Contact Us</button>
+            <input type="text" placeholder="Ask A Question?" />
+          </div>
+        </div>
+
+        <div className="congrats-section">
+          <img src="https://via.placeholder.com/150" alt="Trophy" />
+          <h3>Congrats!!! You compete your target</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Feedback;

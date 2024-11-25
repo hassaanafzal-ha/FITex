@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+.app {
+  display: flex;
+  flex-direction: column; /* Stack header, main content, and footer vertically */
+  height: 100vh; /* Make the app container fill the full viewport height */
+}
+
+.main-container {
+  display: flex; /* Creates a row layout */
+  flex: 1; /* Ensures this section takes up remaining height after header/footer */
+  overflow: hidden; /* Prevents layout overflow */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
