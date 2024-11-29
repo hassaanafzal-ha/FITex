@@ -192,6 +192,10 @@
     text-align: center;
     margin-bottom: 20px;
   }
+  .left-section p
+  {
+    background-color: transparent;
+  }
 
   .gender-buttons {
     justify-content: center;
@@ -201,13 +205,17 @@
     flex-direction: column; /* Stack sliders vertically */
     align-items: center;
     width: 100%;
+    margin-top: -150px;
   }
 
   .vertical-slider, .horizontal-slider {
     width: 100%; /* Make sliders full width */
     max-width: 350px; /* Ensure slider is not too wide on small screens */
   }
-
+  .horizontal-slider
+  {
+    margin-top: -50px;
+  }
   .custom-slider-vertical {
     height: 250px; /* Adjust height for smaller screens */
   }
@@ -215,7 +223,7 @@
   .calculate-bmi {
     width: 200px; /* Adjust button width */
     font-size: 16px;
-    margin-top: 0px;
+    margin-left: 230px;
   }
 }
 
