@@ -120,5 +120,93 @@
   width: 115%; /* Adjust to fill available width */
   height: 113%; /* Adjust to fill available height */
   object-fit: cover;
-  /* border-radius: 10px; */
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .launchPage-launch-page-container {
+    flex-direction: column; /* Stack sections vertically */
+  }
+
+  .launchPage-left-section {
+    padding: 20px;
+    align-items: center;
+  }
+
+  .launchPage-main-content {
+    flex-direction: column; /* Stack logo and text vertically */
+    align-items: center;
+    gap: 15px;
+  }
+
+  .launchPage-logo-image {
+    width: 250px; /* Reduce logo size */
+    height: 400px;
+  }
+
+  .launchPage-app-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .launchPage-actions {
+    gap: 15px;
+  }
+
+  .launchPage-right-section {
+    padding: 20px;
+  }
+
+  .launchPage-right-section img {
+    margin-left: 0;
+    margin-right: 0;
+    width: 80%; /* Scale image to fit */
+  }
+}
+
+/* For mobile devices (max-width: 600px) */
+@media (max-width: 600px) {
+  .launchPage-launch-page-container {
+    flex-direction: column;
+    height: auto; /* Allow height to adjust */
+  }
+
+  .launchPage-left-section {
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .launchPage-main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .launchPage-logo-image {
+    width: 200px;
+    height: 300px;
+  }
+
+  .launchPage-app-title {
+    font-size: 1.8rem;
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+
+  .launchPage-actions {
+    gap: 10px;
+  }
+
+  .launchPage-right-section {
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .launchPage-right-section img {
+    width: 90%; /* Full width for smaller screens */
+    margin: 0 auto;
+  }
 }
