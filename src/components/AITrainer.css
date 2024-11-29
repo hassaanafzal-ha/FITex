@@ -292,7 +292,18 @@ p {
     }
 
     .chat-interface input {
-        width: 100%;
+        width: 96%;
+    }
+    .ai-trainer-examples, .ai-trainer-trainer, .ai-trainer-limitations {
+        flex: 1;
+        text-align: center;
+        /* color: red;
+         */
+         margin-top:-90px;
+    }
+    .chat-history {
+        max-height: 60px; /* Further reduce height for mobile */
+        overflow-y: scroll; /* Ensure scrollable chat history */
     }
 }
 
