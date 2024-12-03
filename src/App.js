@@ -12,8 +12,11 @@ import Subscription from './components/Subscription';
 import HomePage from './components/HomePage';
 import LoginPage from './components/LoginPage';
 import LaunchPage from './components/LaunchPage';
+import { UserProvider } from './UserContext';
+
 function App() {
   return (
+    <UserProvider>
     <div className="app">
         <Router>
       <Header />
@@ -40,6 +43,7 @@ function App() {
          </Router>
       <Footer />
     </div>
+    </UserProvider>
   );
 }
 
