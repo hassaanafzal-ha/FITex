@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import homePic from "./images/homePic.png";
 
 const HomePage = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    // Retrieve the username from localStorage (set during login)
+    const name = localStorage.getItem("userName");
+    if (name) {
+      setUserName(name);
+    }
+  }, []);
+
   return (
     <div className="homepage-container">
-      {/* Transparent Header */}
       <div className="transparent-header">
         <h1>HOMEPAGE</h1>
       </div>
 
-      {/* Main Content */}
       <div className="main-content">
         {/* Welcome Section */}
         <div className="header">
-          <p>Welcome To Your Home</p>
+          <p>Welcome, {userName ? userName : "Guest"}! Welcome To Your Home</p>
         </div>
 
         {/* Card Section */}
@@ -46,15 +54,12 @@ const HomePage = () => {
         {/* Profile Completion Section */}
         <div className="profile-completion-section">
           <p>
-            Enhance user experience with healthy nutrition tips, support resources, 
+            Enhance user experience with healthy nutrition tips, support resources,
             and social elements. Set your Data now.
           </p>
           <button className="profile-button">Complete Your Profile</button>
           <div className="emoji">
-            <img
-              src= {homePic}
-              alt="Motivational Character"
-            />
+            <img src={homePic} alt="Motivational Character" />
           </div>
         </div>
       </div>

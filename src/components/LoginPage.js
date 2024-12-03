@@ -5,6 +5,7 @@ import logoIcon from "./images/logo.png";
 import statisfiedCustomer from "./images/statisfiedCustomer.jpg";
 import axios from "axios";
 import { useUser } from "../UserContext";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const { setUser } = useUser(); 
+  const navigate = useNavigate(); // Hook to navigate between pages
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,13 +48,13 @@ const LoginPage = () => {
 
       // Search for the specific user by email
       const user = Object.values(data).find((user) => user.email === email);
-      //console.log(user)
 
-      if (user || user.password === password) {
-        setUser(user)
+      if (user && user.password === password) {
+        setUser(user); // Set the user data in the context
         setLogerrorMessage("");
+        navigate("/homePage"); // Redirect to HomePage after successful login
       } else {
-        setLogerrorMessage("User not found.");
+        setLogerrorMessage("User not found or incorrect password.");
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -72,13 +74,18 @@ const LoginPage = () => {
 
     try {
       // Send data to Firebase
-      await axios.post(
+      const response = await axios.post(
         "https://fitex-c1fe3-default-rtdb.asia-southeast1.firebasedatabase.app/user.json",
         { name, email, password }
       );
+      
+      // After successful registration, store user and navigate to HomePage
+      const newUser = { name, email, password };
+      setUser(newUser);  // Set the new user to context
       setSuccessMessage("Registration successful!");
       setErrorMessage("");
       setFormData({ name: "", email: "", password: "", confirmPassword: "" }); // Reset form
+      navigate("/homePage"); // Redirect to HomePage after successful registration
     } catch (error) {
       setErrorMessage("Registration failed. Please try again.");
       console.error(error);
@@ -222,4 +229,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

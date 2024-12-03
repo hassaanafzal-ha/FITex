@@ -3,7 +3,8 @@
   background-color: black;
   padding: 20px 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Space between navigation and greeting */
+  align-items: center;
 }
 
 .header nav ul {
@@ -36,6 +37,13 @@
   background-color: #a569ff; /* Blue background for active link */
   color: white; /* Ensure text remains readable */
   border-radius: 5px; /* Optional: Round the corners */
+}
+
+/* User greeting style */
+.user-greeting {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* Mobile/Tablet responsive styles */
