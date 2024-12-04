@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Feedback.css";
 import reviewer from "./images/reviewer.jpg";
 import trophy from "../components/images/trophy.png";
 import statisfiedCustomers from "./images/statisfiedCustomers.png";
+
 const Feedback = () => {
+  const [question, setQuestion] = useState(""); // State to store the question input
+  const [submittedQuestion, setSubmittedQuestion] = useState(null); // State to store the submitted question
+
+  const handleQuestionChange = (e) => {
+    setQuestion(e.target.value); // Update question as user types
+  };
+
+  const handleQuestionSubmit = () => {
+    if (question.trim()) {
+      setSubmittedQuestion(question); // Set submitted question to display below
+      setQuestion(""); // Clear the input field after submission
+    }
+  };
+
   return (
     <div className="feedback-container">
       {/* Feedback Heading */}
@@ -44,8 +59,6 @@ const Feedback = () => {
         {/* Right Block: Trophy Section */}
         <div className="congrats-section">
           <img src={trophy} alt="Trophy" height="500" width="500" />
-          {/* <h4>Congrats!!!</h4>
-          <span>You complete your target</span> */}
         </div>
       </div>
 
@@ -56,8 +69,30 @@ const Feedback = () => {
         <button>General</button>
         <button>Account</button>
         <button>Services</button>
-        <button className="ask-question">Ask a Question</button>
+        <button
+          className="ask-question"
+          onClick={handleQuestionSubmit} // Submit question on click
+        >
+          Ask a Question
+        </button>
       </div>
+
+      {/* Input for Asking Question */}
+      <div className="ask-question-container">
+        <textarea
+          value={question}
+          onChange={handleQuestionChange} // Update question state on change
+          placeholder="Type your question here..."
+        />
+      </div>
+
+      {/* Display the Submitted Question */}
+      {submittedQuestion && (
+        <div className="submitted-question">
+          <h3>Your Question:</h3>
+          <p>{submittedQuestion}</p>
+        </div>
+      )}
     </div>
   );
 };

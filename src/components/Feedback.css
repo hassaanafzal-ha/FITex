@@ -191,6 +191,42 @@
     background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* Ask Question Section */
+.ask-question-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .ask-question-container textarea {
+    width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 1px solid #605656;
+    resize: vertical;
+  }
+  
+  .submitted-question {
+    margin-top: 10px;
+    background-color: #9c46f8;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #773bf7;
+    width: 60%;
+    text-align:center;
+  }
+  
+  .submitted-question h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .submitted-question p {
+    font-size: 1.3rem;
+    color: #333;
+  }
+  
+
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 1024px) {
     .review-section-container {
