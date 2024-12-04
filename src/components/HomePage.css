@@ -207,6 +207,28 @@
   }
 }
 
+.daily-tip {
+  background-color: #9a63e9;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.daily-tip h2 {
+  color: #f9c006;
+  font-size: 24px;
+  border-color: #000;
+  margin-bottom: 10px;
+}
+
+.daily-tip p {
+  color: #000000;
+  font-size: 20px;
+}
+
+
 /* For mobile devices (max-width: 600px) */
 @media (max-width: 600px) {
   .homepage-container {
