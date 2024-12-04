@@ -58,6 +58,13 @@
   gap: 20px;
 }
 
+.gender-buttons button.active {
+  background-color: #6a92ff;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+
 .gender-buttons button {
   background-color: #3c3c3c;
   border: 1px solid #6a92ff;
@@ -71,6 +78,21 @@
 .gender-buttons button:hover {
   background-color: #6a92ff;
 }
+
+/* Message Box to Display BMI */
+.bmi-message-box {
+  margin-left: 20px; /* Space between button and message box */
+  padding: 10px 20px;
+  background-color: #6a92ff;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 18px;
+  display: inline-block;
+  vertical-align: top;
+  min-width: 150px; /* Minimum width for the box */
+  text-align: center;
+}
+
 
 /* Right Section */
 .right-section {
