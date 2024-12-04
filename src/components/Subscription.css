@@ -38,6 +38,33 @@ body {
     text-align: center;
   }
   
+  /* Sidebar Notification */
+.sidebar-notification {
+  position: fixed;
+  right: 0;
+  top: 20%;
+  width: 300px;
+  background-color: #a569ff;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Animation for the notification */
+@keyframes slideIn {
+  from {
+    right: -300px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+  
+
   .subscription-title {
     font-size: 6rem;
     color: rgba(255, 255, 255, 0.1);
