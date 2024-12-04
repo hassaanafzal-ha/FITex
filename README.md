@@ -69,4 +69,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+
+# Main Login page:
 ![FITex](https://github.com/hassaanafzal-ha/FITex/blob/main/FIT1.png)
+
+# BMI Calculator
+![FITex](https://github.com/hassaanafzal-ha/FITex/blob/main/FIT2.png)
