@@ -89,7 +89,7 @@ const Feedback = () => {
       {/* Display the Submitted Question */}
       {submittedQuestion && (
         <div className="submitted-question">
-          <h3>Your Question:</h3>
+          <h3>Your Question will be answered shortly :</h3>
           <p>{submittedQuestion}</p>
         </div>
       )}

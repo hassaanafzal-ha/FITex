@@ -1,6 +1,8 @@
+/* General App Layout */
 .App {
   text-align: center;
 }
+
 .app {
   display: flex;
   flex-direction: column; /* Stack header, main content, and footer vertically */
@@ -11,19 +13,47 @@
   display: flex; /* Creates a row layout */
   flex: 1; /* Ensures this section takes up remaining height after header/footer */
   overflow: hidden; /* Prevents layout overflow */
+  background-color: #f4f4f4; /* Light background for main content */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Landing Page Styles */
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #a569ff; /* Main background color */
+  color: white;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landing-page h1 {
+  font-size: 3rem;
+  margin: 20px 0;
 }
 
+.landing-page p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.landing-page button {
+  padding: 12px 24px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.landing-page button:hover {
+  background-color: #444;
+}
+
+/* Header Styling */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,15 +65,52 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Sidebar & Content Styling */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  height: 100%;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column; /* Stack content vertically on smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+
+  .landing-page h1 {
+    font-size: 2.5rem;
+  }
+
+  .landing-page p {
+    font-size: 1rem;
+  }
+
+  .landing-page button {
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }
