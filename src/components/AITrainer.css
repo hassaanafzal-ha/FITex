@@ -15,14 +15,32 @@
     font-weight: bold;
 }
 
-/* Main Content and Sidebar Layout */
+.ai-trainer-header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.ai-trainer-header .fitex {
+    font-size: 6rem;
+    font-weight: bold;
+    color: yellow;
+}
+
+.ai-trainer-header .ai-trainer {
+    font-size: 2rem;
+    color: #a569ff;
+}
+
+/* Main Content Section */
 .ai-trainer-main {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
-/* Main Content Section */
+/* Main Content Section - Columns */
 .ai-trainer-content {
     margin-top: 80px;
     flex: 3;
@@ -86,6 +104,10 @@ p {
     flex: 1;
     margin-bottom: 20px;
     color: black;
+    max-height: 500px; /* Set a fixed height */
+    overflow-y: auto;  /* Adds a scrollbar when the content exceeds max-height */
+    padding-right: 10px; /* Optional: space for scrollbar */
+    margin-bottom: 10px; /* Adds space for input section */
 }
 
 .chat-history h3 {
@@ -136,22 +158,27 @@ p {
     display: flex;
     justify-content: center;
     padding: 10px;
-    background-color: #c2a3f2;
+    background-color: #333; /* Greyish black background for the footer */
     border-top: 1px solid #ccc;
+    position: sticky;
+    bottom: 10px; /* Adjust distance from the bottom */
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .chat-interface {
     display: flex;
     gap: 10px;
+    width: 100%; /* Make sure it spans across the width */
 }
 
 .chat-interface input {
-    flex: 3; /* Increased flex value for wider input box */
+    flex: 3;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 500px;
-    background-color: #a569ff;
+    background-color: #333; /* Greyish black background for input */
+    color: white; /* White text color for better readability */
 }
 
 .chat-interface button {
@@ -165,171 +192,4 @@ p {
 
 .chat-interface button:hover {
     background-color: black;
-}
-
-/* Header Styling */
-.ai-trainer-header {
-    padding: 20px;
-    text-align: center;
-    background-color: black;
-}
-
-.ai-trainer-header h1 {
-    display: flex;
-    justify-content: center;
-    align-items: baseline; /* Align "AI Trainer" smaller text */
-    gap: 10px; /* Add spacing between the two texts */
-    color: white;
-}
-
-.ai-trainer-header .fitex {
-    font-size: 6rem; /* Larger size for FITex */
-    font-weight: bold; /* Make it bold */
-    color: yellow; /* Make it yellow */
-}
-
-.ai-trainer-header .ai-trainer {
-    font-size: 2rem; /* Smaller size for AI Trainer */
-    font-weight: normal; /* Lighter weight for smaller text */
-    color: #a569ff; /* Keep it white */
-}
-
-/* Buttons Section */
-.buttons-section {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px; /* Space above the buttons */
-}
-
-.buttons-section button {
-    width: 150px;
-    margin: 10px; /* Spacing between buttons */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background-color: #4caf50; /* Green color */
-    transition: background-color 0.3s ease;
-}
-
-.buttons-section button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
-}
-
-.buttons-section .ask-question {
-    background-color: #007bff; /* Blue color for Ask a Question */
-}
-
-.buttons-section .ask-question:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 1024px) {
-    .ai-trainer-main {
-        flex-direction: column; /* Stack elements vertically */
-    }
-
-    .ai-trainer-content {
-        flex: 1;
-        margin-top: 60px; /* Adjust top margin */
-        gap: 10px;
-    }
-
-    .ai-trainer-sidebar {
-        flex: 1;
-        border-left: none; /* Remove border for smaller screens */
-        margin-top: 20px; /* Add margin for spacing */
-    }
-
-    .chat-interface input {
-        width: 100%; /* Full width input on smaller screens */
-    }
-
-    .chat-interface {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .ai-trainer-header .fitex {
-        font-size: 4rem; /* Reduce font size */
-    }
-
-    .ai-trainer-header .ai-trainer {
-        font-size: 1.5rem; /* Reduce font size */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .ai-trainer-header {
-        font-size: 1.2rem;
-    }
-
-    .ai-trainer-header .fitex {
-        font-size: 3.5rem;
-    }
-
-    .ai-trainer-main {
-        flex-direction: column;
-    }
-
-    .ai-trainer-content {
-        flex: 1;
-        margin-top: 50px;
-        gap: 10px;
-    }
-
-    .ai-trainer-sidebar {
-        margin-top: 20px;
-    }
-
-    .buttons-section button {
-        width: 100%; /* Full-width buttons */
-    }
-
-    .chat-interface input {
-        width: 96%;
-    }
-    .ai-trainer-examples, .ai-trainer-trainer, .ai-trainer-limitations {
-        flex: 1;
-        text-align: center;
-        /* color: red;
-         */
-         margin-top:-90px;
-    }
-    .chat-history {
-        max-height: 60px; /* Further reduce height for mobile */
-        overflow-y: scroll; /* Ensure scrollable chat history */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .ai-trainer-header .fitex {
-        font-size: 3rem;
-    }
-
-    .ai-trainer-header .ai-trainer {
-        font-size: 1.2rem;
-    }
-
-    .ai-trainer-content {
-        margin-top: 40px;
-    }
-
-    .chat-interface input {
-        width: 100%;
-    }
-
-    .chat-interface button {
-        width: 100%; /* Full-width button */
-    }
-
-    .ai-trainer-sidebar {
-        margin-top: 20px;
-        padding: 10px;
-    }
 }
