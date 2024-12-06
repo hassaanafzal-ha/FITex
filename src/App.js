@@ -13,8 +13,15 @@ import LoginPage from './components/LoginPage';
 import LaunchPage from './components/LaunchPage';
 import SignUpPage from './components/SignUpPage'; // Import the SignUpPage component
 import { UserProvider } from './UserContext';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    // Clear local storage on initial load
+    localStorage.clear();
+  }, []);
+
   return (
     <UserProvider>
       <div className="app">
