@@ -125,6 +125,62 @@ body {
     background-color: gray;
   }
   
+  .donate-us-section {
+    margin: 30px;
+    background-color:#a569ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .donate-us-section h2 {
+    font-size: 24px;
+    color: #2d87f0;
+    border-color: black black;
+  }
+  
+  .donate-us-section p {
+    font-size: 16px;
+    background-color: #a569ff;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .donate-input {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .donate-input input {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .donate-input button {
+    background-color: #2d87f0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .donate-input button:hover {
+    background-color: #2162b0;
+  }
+  
+  .thank-you-message {
+    font-size: 18px;
+    color: #28a745;
+    margin-top: 10px;
+  }
+  
   /* Image Styling */
   .subscribe-image img {
     max-width: 150px;

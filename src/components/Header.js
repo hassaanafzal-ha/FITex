@@ -7,8 +7,8 @@ function Header() {
     <header className="header">
       <nav>
         <ul>
-        <li><NavLink to="/launchPage">Launch Page</NavLink></li>
-          <li><NavLink to="/loginPage">Login Page</NavLink></li>
+        <li><NavLink to="/launchPage"end className={({ isActive }) => (isActive ? 'active-link' : '')}>Launch Page</NavLink></li>
+          <li><NavLink to="/loginPage"end className={({ isActive }) => (isActive ? 'active-link' : '')}>Login Page</NavLink></li>
           <li><NavLink to="/homePage" end className={({ isActive }) => (isActive ? 'active-link' : '')}>Home</NavLink></li>
           <li><NavLink to="/BMI" className={({ isActive }) => (isActive ? 'active-link' : '')}>BMI</NavLink></li>
           <li><NavLink to="/AITrainer" className={({ isActive }) => (isActive ? 'active-link' : '')}>Ai Trainer</NavLink></li>

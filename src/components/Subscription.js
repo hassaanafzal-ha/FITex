@@ -6,6 +6,8 @@ import logo from "./images/logo.png";
 const Subscription = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [donationAmount, setDonationAmount] = useState('');
+  const [donationMessage, setDonationMessage] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -16,6 +18,19 @@ const Subscription = () => {
       setIsSubscribed(true); // Trigger the subscription message
     } else {
       alert("Please enter a valid email.");
+    }
+  };
+
+  const handleDonationChange = (e) => {
+    setDonationAmount(e.target.value);
+  };
+
+  const handleDonate = () => {
+    if (donationAmount && Number(donationAmount) > 0) {
+      setDonationMessage(`Thank you for donating $${donationAmount}!`);
+      setDonationAmount(''); // Reset donation input
+    } else {
+      alert("Please enter a valid donation amount.");
     }
   };
 
@@ -50,6 +65,22 @@ const Subscription = () => {
           <p>You will receive daily updates!</p>
         </div>
       )}
+
+      {/* Donate Us Section */}
+      <div className="donate-us-section">
+        <h2>💝 Donate Us</h2>
+        <p>Your support helps us improve and maintain this platform. Any contribution is greatly appreciated!</p>
+        <div className="donate-input">
+          <input
+            type="number"
+            placeholder="Enter donation amount ($)"
+            value={donationAmount}
+            onChange={handleDonationChange}
+          />
+          <button onClick={handleDonate}>Donate</button>
+        </div>
+        {donationMessage && <p className="thank-you-message">{donationMessage}</p>}
+      </div>
 
       {/* Footer Section */}
       <footer className="footer">

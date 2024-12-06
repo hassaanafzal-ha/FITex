@@ -55,11 +55,12 @@
 /* Current Date Section */
 .current-date {
   font-size: 20px;
-  color: #fbee65;
+  color:#9a63e9;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
 }
+
 /* Cards Section */
 .cards-section {
   display: flex;
@@ -159,18 +160,19 @@
 
 .profile-button {
   background: #7b68ee;
-  size: 1cap;
+  max-width:fit-content;
+  size: 3cap;
   color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .profile-button:hover {
-  background: #4b4b92;
+  background: #050507;
 }
 
 .emoji img {
@@ -220,7 +222,7 @@
 }
 
 .daily-tip {
-  background-color: #9a63e9;
+  background-color: #7b68ee;
   padding: 15px;
   margin: 20px 0;
   border-radius: 8px;
@@ -229,13 +231,15 @@
 }
 
 .daily-tip h2 {
-  color: #f9c006;
+  color: #d0d0d0;
+  font-weight: bolder;
   font-size: 24px;
   border-color: #000;
   margin-bottom: 10px;
 }
 
 .daily-tip p {
+  background-color: #7b68ee;
   color: #000000;
   font-size: 20px;
 }
