@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden; /* Prevents horizontal scrolling */
 }
 
 /* Header Styling */
@@ -47,6 +48,7 @@
     padding: 20px;
     display: flex;
     gap: 20px;
+    overflow-y: auto; /* Ensures vertical scrolling if necessary */
 }
 
 .ai-trainer-examples, .ai-trainer-trainer, .ai-trainer-limitations {
@@ -55,6 +57,33 @@
     color: yellow;
 }
 
+.ai-trainer-footer {
+    padding: 20px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Start Plan Button */
+.start-plan-btn {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.start-plan-btn:hover {
+    background-color: #45a049;
+}
+
+/* Text Styling */
 p {
     color: black;
     background-color: #f1f1f1;
@@ -93,18 +122,30 @@ p {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 1px; /* Add 1px space between buttons */
 }
 
 .new-chat-btn:hover {
     background-color: gray;
 }
 
+
+/* Sidebar Section */
+.ai-trainer-sidebar {
+    flex: 2; /* Increased flex value to give the sidebar more space */
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ccc;
+    background-color: #a569ff;
+    padding: 10px;
+}
+
 /* Chat History */
 .chat-history {
-    flex: 1;
+    flex: 2; /* Increased the flex value to make chat history wider */
     margin-bottom: 20px;
     color: black;
-    max-height: 500px; /* Set a fixed height */
+    max-height: 700px; /* Increased the max height to make it larger */
     overflow-y: auto;  /* Adds a scrollbar when the content exceeds max-height */
     padding-right: 10px; /* Optional: space for scrollbar */
     margin-bottom: 10px; /* Adds space for input section */
@@ -127,6 +168,8 @@ p {
 .chat-history li:hover {
     text-decoration: underline;
 }
+
+
 
 /* Sidebar Footer */
 .sidebar-footer {
@@ -166,6 +209,7 @@ p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Chat Interface */
 .chat-interface {
     display: flex;
     gap: 10px;
@@ -173,21 +217,24 @@ p {
 }
 
 .chat-interface input {
-    flex: 3;
-    padding: 10px;
+    flex: 4; /* Increased flex for the input box */
+    padding: 15px; /* Increased padding for better height */
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #333; /* Greyish black background for input */
     color: white; /* White text color for better readability */
+    width: 100%; /* Make input box wide */
+    font-size: 1rem; /* Adjust font size */
 }
 
 .chat-interface button {
-    padding: 10px 20px;
+    padding: 15px 30px; /* Adjusted padding to match the larger input */
     background-color: #a569ff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: auto; /* Button width to auto to adjust for the new size */
 }
 
 .chat-interface button:hover {

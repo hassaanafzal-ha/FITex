@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
 import './AITrainer.css';
 
 const AITrainer = () => {
     const [message, setMessage] = useState('');
     const [chatHistory, setChatHistory] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [questionsAnswered, setQuestionsAnswered] = useState([]);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [plan, setPlan] = useState(null); // To store the generated plan
+    const navigate = useNavigate(); // Initialize navigate hook for redirection
 
-    // Function to handle user input and get a response from Gemini API
+    // Questions to ask when creating the plan
+    const questions = [
+        "What are your fitness goals (e.g., weight loss, muscle gain, etc.)?",
+        "How many days a week can you commit to working out?",
+        "Do you have any dietary restrictions or preferences?",
+        "What equipment do you have access to (e.g., dumbbells, resistance bands, etc.)?"
+    ];
+
+    // Check if the user is logged in (for example purposes, assuming localStorage has a flag)
+    const isLoggedIn = localStorage.getItem("userEmail") !== null;
+
+    // Handle sending a regular fitness question to Gemini
     const handleSendMessage = async () => {
         if (!message.trim()) return;
 
-        // Add the user's message to the chat
+        // Display the user's message in the chat
         const userMessage = { sender: 'user', text: message };
         setChatHistory((prev) => [...prev, userMessage]);
         setMessage('');
         setIsLoading(true);
 
         try {
-            //const apiKey = 'your_actual_api_key'; // Replace with your API key
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='apikey'`;
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAJGgPFEjAl-26wI1Dz8Gc4sERqd3OJaNU`;
 
-            // Request body matching the curl request
             const requestBody = {
                 contents: [
                     {
@@ -33,14 +47,9 @@ const AITrainer = () => {
                 ],
             };
 
-            console.log('Request Body:', JSON.stringify(requestBody)); // Debug log for request body
-
-            // Send a POST request to the API
             const response = await fetch(endpoint, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestBody),
             });
 
@@ -49,18 +58,10 @@ const AITrainer = () => {
                 throw new Error(`API returned status ${response.status}`);
             }
 
-            // Parse and log the API response
             const data = await response.json();
-            console.log('API Response:', data);
-
-            // Extract the bot's reply
-            // const botReply = data?.contents?.[0]?.parts?.[0]?.text || 'Sorry, I couldn’t generate a response.';
-	    // const botReply = data?.contents?.[0]?.parts?.[0]?.text || JSON.stringify(data) || 'No response from the bot.';
-
-	    const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn’t generate a response.';
+            const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn’t generate a response.';
             const botMessage = { sender: 'bot', text: botReply };
 
-            // Add the bot's response to the chat
             setChatHistory((prev) => [...prev, botMessage]);
         } catch (error) {
             console.error('Error communicating with Gemini API:', error);
@@ -73,9 +74,106 @@ const AITrainer = () => {
         }
     };
 
+    // Handle Create a Plan button click
+    const handleCreatePlan = () => {
+        if (!isLoggedIn) {
+            navigate('/loginPage'); // Redirect to login page if user is not logged in
+            return;
+        }
+
+        // Clear chat history and reset states for plan creation
+        setChatHistory([]);
+        setQuestionsAnswered([]);
+        setCurrentQuestionIndex(0);
+
+        // Start asking the first question
+        setChatHistory([
+            { sender: 'bot', text: questions[0] }
+        ]);
+    };
+
+    // Handle user answer to a question
+    const handleAnswerQuestion = async () => {
+        if (!message.trim()) return;
+
+        // Display the user's answer in the chat
+        const userMessage = { sender: 'user', text: message };
+        setChatHistory((prev) => [...prev, userMessage]);
+        setMessage('');
+
+        // Save the answer to the current question
+        setQuestionsAnswered((prev) => [
+            ...prev,
+            { question: questions[currentQuestionIndex], answer: message }
+        ]);
+
+        // Move to the next question or create the plan if all questions are answered
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setChatHistory((prev) => [
+                ...prev,
+                { sender: 'bot', text: questions[currentQuestionIndex + 1] }
+            ]);
+        } else {
+            await createFitnessPlan();
+        }
+    };
+
+    // Create fitness plan via Gemini API
+    const createFitnessPlan = async () => {
+        setIsLoading(true);
+
+        const userAnswers = questionsAnswered.map((item) => item.answer);
+
+        const planRequest = {
+            contents: [
+                {
+                    parts: [
+                        {
+                            text: `Create a personalized fitness plan based on the following answers: 
+                            1. Fitness Goals: ${userAnswers[0]} 
+                            2. Workout Days: ${userAnswers[1]} 
+                            3. Dietary Restrictions: ${userAnswers[2]} 
+                            4. Available Equipment: ${userAnswers[3]}`
+                        },
+                    ],
+                },
+            ],
+        };
+
+        try {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAJGgPFEjAl-26wI1Dz8Gc4sERqd3OJaNU`;
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(planRequest),
+            });
+
+            if (!response.ok) {
+                console.error('API Error:', response.status, response.statusText);
+                throw new Error(`API returned status ${response.status}`);
+            }
+
+            const data = await response.json();
+            const generatedPlan = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, there was an issue generating the plan.';
+            setPlan(generatedPlan); // Save the generated plan
+            const botMessage = { sender: 'bot', text: generatedPlan };
+
+            setChatHistory((prev) => [...prev, botMessage]);
+        } catch (error) {
+            console.error('Error creating fitness plan:', error);
+            setChatHistory((prev) => [
+                ...prev,
+                { sender: 'bot', text: 'Sorry, there was an error processing your plan request. Please try again later.' },
+            ]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="ai-trainer-container">
-            {/* Header Section */}
             <header className="ai-trainer-header">
                 <h1>
                     <span className="fitex">FITex</span>
@@ -84,11 +182,13 @@ const AITrainer = () => {
             </header>
 
             <div className="ai-trainer-main">
-                {/* Sidebar Section */}
                 <aside className="ai-trainer-sidebar">
                     <div className="sidebar-header">
                         <button className="new-chat-btn" onClick={() => setChatHistory([])}>
                             + New Chat
+                        </button>
+                        <button className="new-chat-btn" onClick={handleCreatePlan}>
+                            Create a Plan
                         </button>
                     </div>
                     <div className="chat-history">
@@ -101,16 +201,8 @@ const AITrainer = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="sidebar-footer">
-                        <ul>
-                            <li>My Account</li>
-                            <li>Updates & FAQ</li>
-                            <li className="exit-option">Exit</li>
-                        </ul>
-                    </div>
                 </aside>
 
-                {/* Main Content Section */}
                 <section className="ai-trainer-content">
                     <div className="ai-trainer-examples">
                         <h2>Examples</h2>
@@ -133,17 +225,16 @@ const AITrainer = () => {
                 </section>
             </div>
 
-            {/* Footer Section */}
             <footer className="ai-trainer-footer">
                 <div className="chat-interface">
                     <input
                         type="text"
-                        placeholder="Ask a fitness question..."
+                        placeholder="Type your message..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                        onKeyDown={(e) => e.key === 'Enter' && (currentQuestionIndex < questions.length ? handleAnswerQuestion() : handleSendMessage())}
                     />
-                    <button onClick={handleSendMessage} disabled={isLoading}>
+                    <button onClick={currentQuestionIndex < questions.length ? handleAnswerQuestion : handleSendMessage} disabled={isLoading}>
                         {isLoading ? 'Sending...' : 'Send'}
                     </button>
                 </div>
