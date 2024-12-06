@@ -8,11 +8,31 @@ const Feedback = () => {
   const [question, setQuestion] = useState(""); // State to store the question input
   const [submittedQuestion, setSubmittedQuestion] = useState(null); // State to store the submitted question
   const [showContactInfo, setShowContactInfo] = useState(false); // State to toggle contact info
+  const [showFAQ, setShowFAQ] = useState(false); // State to toggle FAQ modal visibility
 
+  // List of FAQ questions
+  const faqQuestions = [
+    "How can I improve my fitness?",
+    "What is the best diet for weight loss?",
+    "How often should I exercise?",
+    "What are the benefits of strength training?",
+    "Can I lose weight by just walking?",
+    "How do I stay motivated to work out?",
+    "What should I eat before and after a workout?",
+    "How do I track my progress effectively?"
+  ];
+
+  // Toggle FAQ section visibility
+  const handleFAQClick = () => {
+    setShowFAQ(!showFAQ); // Toggle the FAQ visibility
+  };
+
+  // Handle question input
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value); // Update question as user types
   };
 
+  // Submit question
   const handleQuestionSubmit = () => {
     if (question.trim()) {
       setSubmittedQuestion(question); // Set submitted question to display below
@@ -20,12 +40,18 @@ const Feedback = () => {
     }
   };
 
+  // Handle contact info modal
   const handleContactClick = () => {
     setShowContactInfo(true); // Show the contact information modal
   };
 
   const closeContactInfo = () => {
     setShowContactInfo(false); // Close the contact information modal
+  };
+
+  // Close FAQ modal
+  const closeFAQModal = () => {
+    setShowFAQ(false); // Close the FAQ modal
   };
 
   return (
@@ -73,7 +99,7 @@ const Feedback = () => {
 
       {/* Buttons Below Review */}
       <div className="buttons-section">
-        <button>FAQ</button>
+        <button onClick={handleFAQClick}>FAQ</button>
         <button onClick={handleContactClick}>Contact Us</button>
         <button>General</button>
         <button>Account</button>
@@ -114,6 +140,23 @@ const Feedback = () => {
               className="close-modal"
               onClick={closeContactInfo} >
               OK
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* FAQ Modal */}
+      {showFAQ && (
+        <div className="faq-modal">
+          <div className="modal-content">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+              {faqQuestions.map((question, index) => (
+                <li key={index}>{question}</li>
+              ))}
+            </ul>
+            <button className="close-modal" onClick={closeFAQModal}>
+              Close
             </button>
           </div>
         </div>
