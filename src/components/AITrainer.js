@@ -142,7 +142,7 @@ const AITrainer = () => {
         };
 
         try {
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAJGgPFEjAl-26wI1Dz8Gc4sERqd3OJaNU`;
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=apikey`;
 
             const response = await fetch(endpoint, {
                 method: 'POST',
