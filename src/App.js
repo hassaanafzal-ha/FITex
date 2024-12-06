@@ -30,6 +30,7 @@ function App() {
               <Route path="/BMI" element={<><BMIForm /><ProfileCard /></>} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/subscription" element={<Subscription />} />
+	      <Route path="/LaunchPage" element={<LaunchPage />} />
               <Route path="/homePage" element={<HomePage />} />
               <Route path="/signUpPage" element={<SignUpPage />} /> {/* Route for the Sign Up page */}
             </Routes>
