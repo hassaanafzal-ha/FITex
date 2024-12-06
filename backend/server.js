@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
+//const UserInfo = require('./models/UserInfo'); 
 
 // Load environment variables
 dotenv.config();
@@ -78,6 +79,18 @@ const fitnessPlanSchema = new mongoose.Schema(
 );
 
 const FitnessPlan = mongoose.model("FitnessPlan", fitnessPlanSchema);
+
+
+const userInfoSchema = new mongoose.Schema({
+  userId: { type: String, required: true, unique: true },
+  height: { type: Number, required: true },
+  weight: { type: Number, required: true },
+  age: { type: Number, required: true },
+  bmi: { type: Number, required: true },
+});
+
+const UserInfo = mongoose.model('UserInfo', userInfoSchema);
+
 
 // Initialize Express App
 const app = express();
@@ -184,6 +197,36 @@ app.post("/api/login", async (req, res) => {
 });
 
 
+// API Route for Saving/Updating User Info
+app.post("/api/user-info", async (req, res) => {
+  const { userId, height, weight, age, bmi } = req.body;
+
+  if (!userId || !height || !weight || !age || !bmi) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+
+  try {
+    // Check if user info already exists for this userId (email)
+    let userInfo = await UserInfo.findOne({ userId });
+
+    if (userInfo) {
+      // If the user exists, update their data
+      userInfo.height = height;
+      userInfo.weight = weight;
+      userInfo.age = age;
+      userInfo.bmi = bmi;
+    } else {
+      // If user info doesn't exist, create a new entry
+      userInfo = new UserInfo({ userId, height, weight, age, bmi });
+    }
+
+    await userInfo.save(); // Save or update user info
+    res.status(200).json({ message: "User info saved/updated successfully!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error saving/updating user info." });
+  }
+});
 
 // Server Port
 const PORT = process.env.PORT || 5000;
