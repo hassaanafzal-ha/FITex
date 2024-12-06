@@ -209,6 +209,97 @@
     background-color: #8a47cc;
   }
   
+  .general-info-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .general-info-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .general-info-modal h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .general-info-modal p {
+    color: #8e47f8;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .general-info-modal .close-modal {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #a569ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .general-info-modal .close-modal:hover {
+    background-color: #8a47cc;
+  }
+  
+  .services-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .services-modal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .services-modal .modal-content ul {
+    color: #8a47cc;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .services-modal .modal-content li {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .services-modal .close-modal {
+    background-color: #a569ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .services-modal .close-modal:hover {
+    background-color: #8a47cc;
+  }
+  
 /* Buttons Section */
 .buttons-section {
     display: flex;

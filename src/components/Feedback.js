@@ -9,22 +9,36 @@ const Feedback = () => {
   const [submittedQuestion, setSubmittedQuestion] = useState(null); // State to store the submitted question
   const [showContactInfo, setShowContactInfo] = useState(false); // State to toggle contact info
   const [showFAQ, setShowFAQ] = useState(false); // State to toggle FAQ modal visibility
+  const [showGeneralInfo, setShowGeneralInfo] = useState(false); // State to toggle general info modal visibility
+  const [showServices, setShowServices] = useState(false); // State to toggle services modal visibility
 
   // List of FAQ questions
   const faqQuestions = [
-    "How can I improve my fitness?",
-    "What is the best diet for weight loss?",
-    "How often should I exercise?",
-    "What are the benefits of strength training?",
-    "Can I lose weight by just walking?",
-    "How do I stay motivated to work out?",
+    "How can I improve my website design?",
+    "How often should I code?",
+    "What are the benefits of MERN?",
+    "Who is the real team lead?",
+    "Can I lose weight by just coding?",
+    "How do I stay motivated by not doing anything?",
     "What should I eat before and after a workout?",
-    "How do I track my progress effectively?"
+    "Is it true that bajwa and butt are ditto same?",
+    "Why Bajwa is all talk and no work?",
   ];
 
   // Toggle FAQ section visibility
   const handleFAQClick = () => {
     setShowFAQ(!showFAQ); // Toggle the FAQ visibility
+  };
+
+  // Toggle General Info section visibility
+  const handleGeneralClick = () => {
+    setShowGeneralInfo(!showGeneralInfo); // Toggle general info visibility
+  };
+
+  // Toggle Services section visibility
+  const handleServicesClick = () => {
+    console.log("Services button clicked"); // Debugging line
+    setShowServices(!showServices); // Toggle services modal visibility
   };
 
   // Handle question input
@@ -52,6 +66,14 @@ const Feedback = () => {
   // Close FAQ modal
   const closeFAQModal = () => {
     setShowFAQ(false); // Close the FAQ modal
+  };
+
+  const closeGeneralInfo = () => {
+    setShowGeneralInfo(false); // Close the general info modal
+  };
+
+  const closeServicesModal = () => {
+    setShowServices(false); // Close the services modal
   };
 
   return (
@@ -101,9 +123,8 @@ const Feedback = () => {
       <div className="buttons-section">
         <button onClick={handleFAQClick}>FAQ</button>
         <button onClick={handleContactClick}>Contact Us</button>
-        <button>General</button>
-        <button>Account</button>
-        <button>Services</button>
+        <button onClick={handleGeneralClick}>General</button>
+        <button onClick={handleServicesClick}>Services</button>
         <button
           className="ask-question"
           onClick={handleQuestionSubmit} // Submit question on click
@@ -156,6 +177,53 @@ const Feedback = () => {
               ))}
             </ul>
             <button className="close-modal" onClick={closeFAQModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* General Info Modal */}
+      {showGeneralInfo && (
+        <div className="general-info-modal">
+          <div className="modal-content">
+            <h2>General Information</h2>
+            <p>
+              Welcome to our fitness app! We provide personalized workout
+              plans, nutrition tracking, and progress monitoring to help you
+              achieve your fitness goals.
+            </p>
+            <p>
+              Our mission is to empower individuals to live healthier, more
+              active lives. We believe in offering support and guidance to help
+              you stay motivated and on track.
+            </p>
+            <p>
+              For more information about our services, feel free to check out
+              the FAQ section or reach out to us through the contact page.
+            </p>
+            <button className="close-modal" onClick={closeGeneralInfo}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Services Modal */}
+      {showServices && (
+        <div className="services-modal">
+          <div className="modal-content">
+            <h2>Our Services</h2>
+            <ul>
+              <li>Personalized Workout Plans</li>
+              <li>Nutrition Tracking</li>
+              <li>Progress Monitoring</li>
+              <li>Weekly Check-ins with Coaches</li>
+              <li>Motivational Support</li>
+              <li>24/7 Online Support</li>
+              <li>Customized Meal Plans</li>
+            </ul>
+            <button className="close-modal" onClick={closeServicesModal}>
               Close
             </button>
           </div>
