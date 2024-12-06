@@ -33,7 +33,7 @@ const AITrainer = () => {
         setIsLoading(true);
 
         try {
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAJGgPFEjAl-26wI1Dz8Gc4sERqd3OJaNU`;
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=Apikey`;
 
             const requestBody = {
                 contents: [
