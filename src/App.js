@@ -23,12 +23,14 @@ function App() {
           <div className="main-container">
             <Sidebar />
             <Routes>
-              <Route path="launchPage" element={<LaunchPage />} />
+              {/* Set the LaunchPage as the default route */}
+              <Route path="/" element={<LaunchPage />} /> {/* Default route */}
               <Route path="loginPage" element={<LoginPage />} />
               <Route path="/AITrainer" element={<AITrainer />} />
               <Route path="/BMI" element={<><BMIForm /><ProfileCard /></>} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/subscription" element={<Subscription />} />
+	      <Route path="/LaunchPage" element={<LaunchPage />} />
               <Route path="/homePage" element={<HomePage />} />
               <Route path="/signUpPage" element={<SignUpPage />} /> {/* Route for the Sign Up page */}
             </Routes>

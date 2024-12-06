@@ -17,7 +17,6 @@
   flex: 1;
   max-width: 400px;
   padding: 20px;
-
 }
 
 .loginPage-left-section h1 {
@@ -69,8 +68,8 @@
 
 .loginPage-password-input input {
   flex: 1;
-  width: 30px;
-  height: 30px;
+  width: 250px; /* Increased width of the password input to match the email/phone number input */
+  height: 40px; /* Increased height of the password input for better consistency */
   border-radius: 5%;
 }
 
@@ -83,17 +82,7 @@
   font-size: 14px;
 }
 
-/* .loginPage-login-form .login-button {
- width: 100%;
-  background-color: #a569ff;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
-.loginPage-login-button
-{
+.loginPage-login-button {
   width: 100%;
   background-color: #a569ff;
   color: #fff;
@@ -102,6 +91,7 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
 /* Center Image Section */
 .loginPage-image-section {
   flex: 1.5;
