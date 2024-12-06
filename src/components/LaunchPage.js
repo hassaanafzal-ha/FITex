@@ -14,23 +14,31 @@ const LaunchPage = () => {
 
   // Handle phone number modal visibility
   const handlePhoneButtonClick = () => {
-    setPhoneModalVisible(true); // Show the phone number modal
+    //setPhoneModalVisible(true); // Show the phone number modal
+    navigate("/SignUpPage");
   };
 
   const handlePhoneSubmit = () => {
     // You can handle the phone number verification logic here
     alert(`Phone number ${phoneNumber} submitted.`);
     setPhoneModalVisible(false);
+	
   };
 
   // Handle the Sign-Up button click
   const handleSignUpClick = () => {
+    navigate("/SignUpPage");
+  };
+
+  // Handle the Login button click
+  const handleLoginClick = () => {
     navigate("/loginPage");
   };
 
   // Google login click (you can integrate Google OAuth here)
   const handleGoogleSignIn = () => {
-    alert("Google Sign-In button clicked");
+	navigate("/SignUpPage");
+    //alert("Google Sign-In button clicked");
     // Implement Google OAuth flow here
   };
 
@@ -72,7 +80,13 @@ const LaunchPage = () => {
               >
                 Continue with Google
               </button>
-              <a href="/" className="launchPage-login-link">Log in</a>
+              {/* Log in link (button-style) */}
+              <button
+                className="launchPage-btn launchPage-primary"
+                onClick={handleLoginClick}
+              >
+                Log in
+              </button>
               <img src={launchRobot} alt="Robot" className="launchPage-robot-image" />
             </div>
           </div>

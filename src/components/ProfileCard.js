@@ -6,29 +6,33 @@ import { useUser } from "../UserContext";
 function ProfileCard() {
   const { user } = useUser();
 
+  // Retrieve the username from localStorage if not available in the user object
+  const userName = user?.name || localStorage.getItem("userName") || "Guest";
+  const userEmail = user?.email || localStorage.getItem("userEmail") || "guest@example.com";
+
   return (
-    <div class="profile-card">
+    <div className="profile-card">
       <img src={logo} alt="User Picture" />
-      <h3>{user.name}</h3>
-      <p>{user.email}</p>
+      <h3>{userName}</h3>
+      <p>{userEmail}</p>
       <p>Birthday: June 8th</p>
 
-      <div class="user-info-grid">
-        <div class="info-item">
-          <p class="info-value">66 Kg</p>
-          <p class="info-label">Weight</p>
+      <div className="user-info-grid">
+        <div className="info-item">
+          <p className="info-value">66 Kg</p>
+          <p className="info-label">Weight</p>
         </div>
-        <div class="info-item">
-          <p class="info-value">22</p>
-          <p class="info-label">Years Old</p>
+        <div className="info-item">
+          <p className="info-value">22</p>
+          <p className="info-label">Years Old</p>
         </div>
-        <div class="info-item">
-          <p class="info-value">181.2 CM</p>
-          <p class="info-label">Height</p>
+        <div className="info-item">
+          <p className="info-value">181.2 CM</p>
+          <p className="info-label">Height</p>
         </div>
       </div>
 
-      <div class="running-emoji">🏃</div>
+      <div className="running-emoji">🏃</div>
     </div>
   );
 }

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./HomePage.css";
 import homePic from "./images/homePic.png";
 
 const HomePage = () => {
   const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [dailyTip, setDailyTip] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve username from localStorage (set during login)
+    // Retrieve username and email from localStorage
     const name = localStorage.getItem("userName");
+    const email = localStorage.getItem("userEmail");
     setUserName(name || "Guest");
+    setUserEmail(email || ""); // Empty if not logged in
 
     // Array of fitness tips
     const tips = [
@@ -32,9 +36,26 @@ const HomePage = () => {
     setDailyTip(randomTip);
   }, []);
 
-  const handleCompleteProfile = () => {
-    // Navigate to the profile page
-    navigate("/BMI");
+  // Handle card click
+  const handleCardClick = async (title) => {
+    if (!userEmail) {
+      // Proceed without storing data if user is not logged in
+      navigate("/BMI");
+      return;
+    }
+
+    try {
+      // Save selected fitness plan to the backend
+      await axios.post("http://localhost:5000/api/fitness-plan", {
+        email: userEmail,
+        title,
+      });
+
+      // Redirect to the BMI page
+      navigate("/BMI");
+    } catch (error) {
+      console.error("Error saving fitness plan:", error);
+    }
   };
 
   return (
@@ -65,7 +86,11 @@ const HomePage = () => {
             { title: "Muscle Gain", text: "Build muscle strength with effective training and proper guidance." },
             { title: "Nutritions", text: "Optimize your diet with personalized nutrition and meal planning." },
           ].map((card, index) => (
-            <div className={`card ${index === 1 ? "active" : ""}`} key={index}>
+            <div
+              className={`card ${index === 1 ? "active" : ""}`}
+              key={index}
+              onClick={() => handleCardClick(card.title)} // Make card clickable
+            >
               <h3>{card.title}</h3>
               <p>{card.text}</p>
             </div>
@@ -78,7 +103,7 @@ const HomePage = () => {
             Enhance your fitness journey with healthy tips, support resources, and social engagement. 
             Update your profile to unlock personalized experiences!
           </p>
-          <button className="profile-button" onClick={handleCompleteProfile}>
+          <button className="profile-button" onClick={() => navigate("/BMI")}>
             Complete Your Profile
           </button>
         </div>
