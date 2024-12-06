@@ -19,7 +19,6 @@
   box-sizing: border-box; /* Ensures padding doesn't add extra width */
 }
 
-
 /* Background "Body Mass" Text */
 .background-text {
   position: absolute;
@@ -50,7 +49,7 @@
   font-size: 32px;
   margin-bottom: 20px;
   background-color: black;
-  color:white;
+  color: white;
 }
 
 .gender-buttons {
@@ -63,7 +62,6 @@
   color: #ffffff;
   border: 2px solid #ffffff;
 }
-
 
 .gender-buttons button {
   background-color: #3c3c3c;
@@ -92,7 +90,6 @@
   min-width: 150px; /* Minimum width for the box */
   text-align: center;
 }
-
 
 /* Right Section */
 .right-section {
@@ -180,6 +177,27 @@
   transform: scale(1.2);
 }
 
+/* Save Information Button (Positioned above the Calculate BMI button) */
+.save-info {
+  position: absolute;
+  bottom: 70px; /* Place it above the Calculate BMI button */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: #6a92ff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 2; /* Ensure button is above other content */
+}
+
+.save-info:hover {
+  background-color: #3c3c3c;
+}
+
 /* Calculate BMI Button */
 .calculate-bmi {
   position: absolute;
@@ -214,8 +232,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  .left-section p
-  {
+  .left-section p {
     background-color: transparent;
   }
 
@@ -234,10 +251,11 @@
     width: 100%; /* Make sliders full width */
     max-width: 350px; /* Ensure slider is not too wide on small screens */
   }
-  .horizontal-slider
-  {
+
+  .horizontal-slider {
     margin-top: -50px;
   }
+
   .custom-slider-vertical {
     height: 250px; /* Adjust height for smaller screens */
   }
@@ -312,4 +330,36 @@
 
 .slider-value {
   margin-right: 100px;
+}
+
+/* Styling for the Age input section */
+.age-input {
+  margin: 15px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.age-input label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: white;
+}
+
+.age-input input {
+  padding: 10px;
+  width: 150px;
+  font-size: 16px;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.age-input input:focus {
+  border-color: #45a049; /* Change border color on focus */
+}
+
+.age-input input::placeholder {
+  color: #888;
+  font-style: italic;
 }

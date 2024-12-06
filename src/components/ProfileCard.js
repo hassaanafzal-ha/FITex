@@ -7,15 +7,12 @@ function ProfileCard() {
   const { user } = useUser();
 
   // Retrieve the username from localStorage if not available in the user object
-  const userName = user?.name || localStorage.getItem("userName") || "Guest";
-  const userEmail = user?.email || localStorage.getItem("userEmail") || "guest@example.com";
+  const userName =  localStorage.getItem("userName") || "Guest";
 
   return (
     <div className="profile-card">
       <img src={logo} alt="User Picture" />
       <h3>{userName}</h3>
-      <p>{userEmail}</p>
-      <p>Birthday: June 8th</p>
 
       <div className="user-info-grid">
         <div className="info-item">
