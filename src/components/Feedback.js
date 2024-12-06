@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./Feedback.css";
 import reviewer from "./images/reviewer.jpg";
 import trophy from "../components/images/trophy.png";
-import statisfiedCustomers from "./images/statisfiedCustomers.png";
+import satisfiedCustomers from "./images/statisfiedCustomers.png";
 
 const Feedback = () => {
   const [question, setQuestion] = useState(""); // State to store the question input
   const [submittedQuestion, setSubmittedQuestion] = useState(null); // State to store the submitted question
+  const [showContactInfo, setShowContactInfo] = useState(false); // State to toggle contact info
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value); // Update question as user types
@@ -17,6 +18,14 @@ const Feedback = () => {
       setSubmittedQuestion(question); // Set submitted question to display below
       setQuestion(""); // Clear the input field after submission
     }
+  };
+
+  const handleContactClick = () => {
+    setShowContactInfo(true); // Show the contact information modal
+  };
+
+  const closeContactInfo = () => {
+    setShowContactInfo(false); // Close the contact information modal
   };
 
   return (
@@ -33,7 +42,7 @@ const Feedback = () => {
           <h2>What Our Member Say About Us?</h2>
           <div className="satisfied-customer">
             <span>10K+ Satisfied Customers</span>
-            <img src={statisfiedCustomers} alt="Satisfied Customer" />
+            <img src={satisfiedCustomers} alt="Satisfied Customer" />
           </div>
         </div>
 
@@ -65,7 +74,7 @@ const Feedback = () => {
       {/* Buttons Below Review */}
       <div className="buttons-section">
         <button>FAQ</button>
-        <button>Contact Us</button>
+        <button onClick={handleContactClick}>Contact Us</button>
         <button>General</button>
         <button>Account</button>
         <button>Services</button>
@@ -91,6 +100,22 @@ const Feedback = () => {
         <div className="submitted-question">
           <h3>Your Question will be answered shortly :</h3>
           <p>{submittedQuestion}</p>
+        </div>
+      )}
+
+      {/* Modal for Contact Information */}
+      {showContactInfo && (
+        <div className="contact-modal">
+          <div className="modal-content">
+            <h2> Developers Info </h2>
+            <p>Email: Ubadahme@gmail.com</p>
+            <p>Phone: +92-3302255220</p>
+            <button 
+              className="close-modal"
+              onClick={closeContactInfo} >
+              OK
+            </button>
+          </div>
         </div>
       )}
     </div>
