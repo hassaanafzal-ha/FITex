@@ -1,11 +1,12 @@
-/* LaunchPage.css */
+/* LaunchPage Styles */
 .launchPage-launch-page-container {
   display: flex;
-  flex-direction: row; /* Arrange sections horizontally */
+  flex-direction: row;
   height: 100vh;
-  background-color: #000;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   color: white;
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .launchPage-left-section {
@@ -20,27 +21,28 @@
 .launchPage-main-content {
   display: flex;
   flex-direction: row;
-  align-items: flex-start; /* Align logo and content at the top */
-  gap: 20px; /* Space between the logo and text */
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .launchPage-logo-image {
-  width: 350px; /* Adjust size as needed */
-  height: 550px;
+  width: 300px;
+  height: auto;
 }
 
 .launchPage-text-and-actions {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 20px; /* Space between features and actions */
+  gap: 20px;
 }
 
 .launchPage-app-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #e4ff00;
   margin-bottom: 20px;
-  margin-top: 105px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .launchPage-features ul {
@@ -52,26 +54,32 @@
 .launchPage-features li {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: #fff;
+  color: #ccc;
 }
 
 .launchPage-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .launchPage-btn {
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .launchPage-primary {
   background-color: #7b68ee;
   color: white;
+}
+
+.launchPage-primary:hover {
+  background-color: #5a4dca;
 }
 
 .launchPage-secondary {
@@ -80,9 +88,17 @@
   border: 1px solid #fff;
 }
 
+.launchPage-secondary:hover {
+  background-color: #222;
+}
+
 .launchPage-google {
   background-color: white;
   color: black;
+}
+
+.launchPage-google:hover {
+  background-color: #f1f1f1;
 }
 
 .launchPage-login-link {
@@ -90,6 +106,7 @@
   color: #ccc;
   text-decoration: none;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .launchPage-login-link:hover {
@@ -97,9 +114,20 @@
 }
 
 .launchPage-robot-image {
-  width: 150px;
+  width: 200px;
   height: auto;
-  margin-top: 50px;
+  margin-top: 30px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .launchPage-right-section {
@@ -110,40 +138,106 @@
   padding: 40px;
 }
 
-.launchPage-right-section img {
-  margin-left: 20px;
-  margin-right: -40px;
-  width: 660px;
-}
-
 .launchPage-large-image {
-  width: 115%; /* Adjust to fill available width */
-  height: 113%; /* Adjust to fill available height */
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Media Queries for Responsiveness */
+/* Modal Styles */
+.phone-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-/* For tablets (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .launchPage-launch-page-container {
-    flex-direction: column; /* Stack sections vertically */
+.phone-modal-content {
+  background-color: white;
+  color: black;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: scale-up 0.3s ease;
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
+.phone-modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.phone-modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.phone-modal-content button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.phone-modal-content button:first-of-type {
+  background-color: #7b68ee;
+  color: white;
+}
+
+.phone-modal-content button:first-of-type:hover {
+  background-color: #5a4dca;
+}
+
+.phone-modal-content button:last-of-type {
+  background-color: #ddd;
+  color: black;
+}
+
+.phone-modal-content button:last-of-type:hover {
+  background-color: #bbb;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .launchPage-left-section {
     padding: 20px;
     align-items: center;
   }
 
   .launchPage-main-content {
-    flex-direction: column; /* Stack logo and text vertically */
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
   }
 
   .launchPage-logo-image {
-    width: 250px; /* Reduce logo size */
-    height: 400px;
+    width: 200px;
   }
 
   .launchPage-app-title {
@@ -152,61 +246,6 @@
   }
 
   .launchPage-actions {
-    gap: 15px;
-  }
-
-  .launchPage-right-section {
-    padding: 20px;
-  }
-
-  .launchPage-right-section img {
-    margin-left: 0;
-    margin-right: 0;
-    width: 80%; /* Scale image to fit */
-  }
-}
-
-/* For mobile devices (max-width: 600px) */
-@media (max-width: 600px) {
-  .launchPage-launch-page-container {
-    flex-direction: column;
-    height: auto; /* Allow height to adjust */
-  }
-
-  .launchPage-left-section {
-    align-items: center;
-    text-align: center;
-    padding: 15px;
-  }
-
-  .launchPage-main-content {
-    flex-direction: column;
-    align-items: center;
     gap: 10px;
-  }
-
-  .launchPage-logo-image {
-    width: 200px;
-    height: 300px;
-  }
-
-  .launchPage-app-title {
-    font-size: 1.8rem;
-    margin-top: 50px;
-    margin-bottom: 15px;
-  }
-
-  .launchPage-actions {
-    gap: 10px;
-  }
-
-  .launchPage-right-section {
-    padding: 15px;
-    justify-content: center;
-  }
-
-  .launchPage-right-section img {
-    width: 90%; /* Full width for smaller screens */
-    margin: 0 auto;
   }
 }
