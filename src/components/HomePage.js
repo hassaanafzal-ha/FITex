@@ -4,19 +4,67 @@ import axios from "axios";
 import "./HomePage.css";
 import homePic from "./images/homePic.png";
 
+const translations = {
+  en: {
+    welcome: "Welcome,",
+    todaysDate: "Today's Date:",
+    dailyTip: "💡 Daily Fitness Tip",
+    cards: [
+      { title: "Cardio Strength", text: "Boost your heart health and stamina with focused cardio exercises." },
+      { title: "Fat Loss", text: "Accelerate fat burning with tailored workout and nutrition plans." },
+      { title: "Muscle Gain", text: "Build muscle strength with effective training and proper guidance." },
+      { title: "Nutritions", text: "Optimize your diet with personalized nutrition and meal planning." },
+    ],
+    profileMessage:
+      "Enhance your fitness journey with healthy tips, support resources, and social engagement. Update your profile to unlock personalized experiences!",
+    profileButton: "Complete Your Profile",
+  },
+  es: {
+    welcome: "Bienvenido,",
+    todaysDate: "Fecha de hoy:",
+    dailyTip: "💡 Consejo diario de fitness",
+    cards: [
+      { title: "Fuerza Cardio", text: "Mejora tu salud cardíaca y resistencia con ejercicios de cardio enfocados." },
+      { title: "Pérdida de Grasa", text: "Acelera la quema de grasa con planes de entrenamiento y nutrición personalizados." },
+      { title: "Ganancia Muscular", text: "Construye fuerza muscular con entrenamiento efectivo y orientación adecuada." },
+      { title: "Nutrición", text: "Optimiza tu dieta con planificación de comidas personalizada." },
+    ],
+    profileMessage:
+      "Mejora tu viaje de fitness con consejos saludables, recursos de apoyo y compromiso social. ¡Actualiza tu perfil para desbloquear experiencias personalizadas!",
+    profileButton: "Completa tu Perfil",
+  },
+  fr: {
+    welcome: "Bienvenue,",
+    todaysDate: "Date d'aujourd'hui:",
+    dailyTip: "💡 Conseil quotidien sur le fitness",
+    cards: [
+      { title: "Force Cardio", text: "Améliorez votre santé cardiaque et votre endurance avec des exercices de cardio ciblés." },
+      { title: "Perte de Graisse", text: "Accélérez la combustion des graisses avec des plans d'entraînement et de nutrition personnalisés." },
+      { title: "Gain Musculaire", text: "Développez votre force musculaire grâce à un entraînement efficace et des conseils appropriés." },
+      { title: "Nutrition", text: "Optimisez votre alimentation grâce à une planification des repas personnalisée." },
+    ],
+    profileMessage:
+      "Améliorez votre parcours de fitness avec des conseils sains, des ressources de soutien et un engagement social. Mettez à jour votre profil pour débloquer des expériences personnalisées !",
+    profileButton: "Complétez votre Profil",
+  },
+};
+
 const HomePage = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [dailyTip, setDailyTip] = useState("");
-  const [currentDate, setCurrentDate] = useState(""); // State for current date
+  const [currentDate, setCurrentDate] = useState("");
+  const [language, setLanguage] = useState("en");
   const navigate = useNavigate();
+
+  const t = translations[language];
 
   useEffect(() => {
     // Retrieve username and email from localStorage
     const name = localStorage.getItem("userName");
     const email = localStorage.getItem("userEmail");
     setUserName(name || "Guest");
-    setUserEmail(email || ""); // Empty if not logged in
+    setUserEmail(email || "");
 
     // Array of fitness tips
     const tips = [
@@ -32,75 +80,51 @@ const HomePage = () => {
       "Find a workout you enjoy to stay motivated.",
     ];
 
-    // Select a random tip
     const randomTip = tips[Math.floor(Math.random() * tips.length)];
     setDailyTip(randomTip);
 
-    // Set current date
     const today = new Date();
-    const dateString = today.toLocaleDateString(); // Get the current date in a readable format
-    setCurrentDate(dateString);
+    setCurrentDate(today.toLocaleDateString());
   }, []);
 
-  // Handle card click
-  const handleCardClick = async (title) => {
-    if (!userEmail) {
-      // Proceed without storing data if user is not logged in
-      navigate("/BMI");
-      return;
-    }
-
-    try {
-      // Save selected fitness plan to the backend
-      await axios.post("http://localhost:5000/api/fitness-plan", {
-        email: userEmail,
-        title,
-      });
-
-      // Redirect to the BMI page
-      navigate("/BMI");
-    } catch (error) {
-      console.error("Error saving fitness plan:", error);
-    }
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value);
   };
 
   return (
     <div className="homepage-container">
       {/* Transparent Header */}
       <div className="transparent-header">
-        <h1>Welcome Home</h1>
+        <h1>{t.welcome} {userName}</h1>
+      </div>
+
+      {/* Language Selector */}
+      <div className="language-selector">
+        <label htmlFor="language">Select Language: </label>
+        <select id="language" value={language} onChange={handleLanguageChange}>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
       </div>
 
       {/* Main Content */}
       <div className="main-content">
-        {/* Welcome Section */}
-        <div className="header">
-          <p>Welcome, <span className="username">{userName}</span>!</p>
-        </div>
-
-        {/* Current Date Section */}
         <div className="current-date">
-          <h3>Today's Date: {currentDate}</h3>
+          <h3>{t.todaysDate} {currentDate}</h3>
         </div>
 
-        {/* Daily Fitness Tip */}
         <div className="daily-tip">
-          <h2>💡 Daily Fitness Tip</h2>
+          <h2>{t.dailyTip}</h2>
           <p>{dailyTip}</p>
         </div>
 
-        {/* Fitness Goals Cards */}
         <div className="cards-section">
-          {[ 
-            { title: "Cardio Strength", text: "Boost your heart health and stamina with focused cardio exercises." },
-            { title: "Fat Loss", text: "Accelerate fat burning with tailored workout and nutrition plans." },
-            { title: "Muscle Gain", text: "Build muscle strength with effective training and proper guidance." },
-            { title: "Nutritions", text: "Optimize your diet with personalized nutrition and meal planning." },
-          ].map((card, index) => (
+          {t.cards.map((card, index) => (
             <div
               className={`card ${index === 1 ? "active" : ""}`}
               key={index}
-              onClick={() => handleCardClick(card.title)} // Make card clickable
+              onClick={() => navigate("/BMI")}
             >
               <h3>{card.title}</h3>
               <p>{card.text}</p>
@@ -108,18 +132,13 @@ const HomePage = () => {
           ))}
         </div>
 
-        {/* Profile Completion Section */}
         <div className="profile-completion-section">
-          <p>
-            Enhance your fitness journey with healthy tips, support resources, and social engagement. 
-            Update your profile to unlock personalized experiences!
-          </p>
+          <p>{t.profileMessage}</p>
           <button className="profile-button" onClick={() => navigate("/BMI")}>
-            Complete Your Profile
+            {t.profileButton}
           </button>
         </div>
 
-        {/* Motivational Image */}
         <div className="motivational-image">
           <img src={homePic} alt="Motivational Character" />
         </div>

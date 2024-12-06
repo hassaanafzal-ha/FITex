@@ -82,13 +82,18 @@
   margin-left: 20px; /* Space between button and message box */
   padding: 10px 20px;
   background-color: #6a92ff;
-  color: #ffffff;
+  color: #6a92ff;
   border-radius: 8px;
   font-size: 18px;
   display: inline-block;
   vertical-align: top;
   min-width: 150px; /* Minimum width for the box */
   text-align: center;
+}
+
+.bmi-message-box p
+{
+  background-color:#6a92ff ;
 }
 
 /* Right Section */
@@ -200,9 +205,10 @@
 
 /* Calculate BMI Button */
 .calculate-bmi {
-  position: absolute;
+  position:absolute;
   bottom: 20px; /* Align at the bottom */
   left: 50%;
+  margin: auto;
   transform: translateX(-50%); /* Center horizontally */
   background-color: #6a92ff;
   color: #ffffff;
