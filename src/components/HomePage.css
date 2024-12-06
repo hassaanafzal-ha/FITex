@@ -48,7 +48,18 @@
   background-color: black;
   margin-right: 400px;
 }
+.username {
+  color:#9a63e9;
+}
 
+/* Current Date Section */
+.current-date {
+  font-size: 20px;
+  color: #fbee65;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
 /* Cards Section */
 .cards-section {
   display: flex;
@@ -131,9 +142,9 @@
 }
 
 .profile-completion-section p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   flex: 2;
-  margin: 0;
+  margin:auto;
   color: white;
   background-color: black;
 }
@@ -148,6 +159,7 @@
 
 .profile-button {
   background: #7b68ee;
+  size: 1cap;
   color: #fff;
   padding: 10px 20px;
   border: none;

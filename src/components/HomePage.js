@@ -8,6 +8,7 @@ const HomePage = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [dailyTip, setDailyTip] = useState("");
+  const [currentDate, setCurrentDate] = useState(""); // State for current date
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +35,11 @@ const HomePage = () => {
     // Select a random tip
     const randomTip = tips[Math.floor(Math.random() * tips.length)];
     setDailyTip(randomTip);
+
+    // Set current date
+    const today = new Date();
+    const dateString = today.toLocaleDateString(); // Get the current date in a readable format
+    setCurrentDate(dateString);
   }, []);
 
   // Handle card click
@@ -72,6 +78,11 @@ const HomePage = () => {
           <p>Welcome, <span className="username">{userName}</span>!</p>
         </div>
 
+        {/* Current Date Section */}
+        <div className="current-date">
+          <h3>Today's Date: {currentDate}</h3>
+        </div>
+
         {/* Daily Fitness Tip */}
         <div className="daily-tip">
           <h2>💡 Daily Fitness Tip</h2>
@@ -80,7 +91,7 @@ const HomePage = () => {
 
         {/* Fitness Goals Cards */}
         <div className="cards-section">
-          {[
+          {[ 
             { title: "Cardio Strength", text: "Boost your heart health and stamina with focused cardio exercises." },
             { title: "Fat Loss", text: "Accelerate fat burning with tailored workout and nutrition plans." },
             { title: "Muscle Gain", text: "Build muscle strength with effective training and proper guidance." },
