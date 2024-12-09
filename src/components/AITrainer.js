@@ -92,10 +92,10 @@ const AITrainer = () => {
     
 
     const handleCreatePlan = () => {
-        /*if (!isLoggedIn) {
+        if (!isLoggedIn) {
             navigate('/loginPage');
             return;
-        }*/
+        }
         setMode('plan');
         setChatHistory([]);
         setQuestionsAnswered([]);
