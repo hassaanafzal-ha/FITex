@@ -78,14 +78,27 @@ const AITrainer = () => {
     };
 
     const formatResponse = (response) => {
-        let formattedResponse = response.replace(/\*/g, '');
-        formattedResponse = formattedResponse.replace(/(\*\*?[A-Za-z\s]+[\:]+)(\s?)/g, '\n\n$1');
-        formattedResponse = formattedResponse.replace(/(\(Day [0-9]+[\:\)]\))/g, '\n$1\n');
-        formattedResponse = formattedResponse.replace(/\|(\s?[\w\s]+[^\|]+)\|/g, '\n$1\n');
-        formattedResponse = formattedResponse.replace(/[\|\-]/g, '');
-        formattedResponse = formattedResponse.replace(/\n{2,}/g, '\n');
+        let formattedResponse = response;
+    
+        // Remove `**` from headings and ensure one newline after each heading
+        formattedResponse = formattedResponse.replace(/\*\*([^\*]+)\*\*:/g, '$1:\n');
+        formattedResponse = formattedResponse.replace(/\*/g, '');
+    
+        // Add a single newline before days or weeks
+        formattedResponse = formattedResponse.replace(/\b(Day [0-9]+|Week [0-9]+)\b/g, '\n$1');
+    
+        // Add a single newline after headings (without duplicating newlines)
+        formattedResponse = formattedResponse.replace(/\b(Warm-up|Cool-down|Progressive Overload|Nutrition|Rest|Important Notes|Training Schedule|Workout Details|Key Exercises)\b:/g, '$1:\n');
+    
+        // Remove asterisks (*) from bullet points
+        formattedResponse = formattedResponse.replace(/^\s*\*\s*/gm, '');
+    
+        // Replace `\n` with `<br />` for HTML rendering
         formattedResponse = formattedResponse.replace(/\n/g, '<br />');
+    
+        // Trim leading/trailing whitespace and ensure no extra line breaks at the start or end
         formattedResponse = formattedResponse.trim();
+    
         return formattedResponse;
     };
     
